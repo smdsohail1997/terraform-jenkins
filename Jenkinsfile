@@ -26,6 +26,8 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
+                    // Ask for confirmation before generating a new Terraform plan
+                    input message: 'Generate a new Terraform plan?', ok: 'Generate'
                     // Find all directories containing .tf files
                     def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
