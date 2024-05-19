@@ -52,5 +52,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Terraform Destroy') {
+            steps {
+                script {
+                    // Find all directories containing .tf files
+                    def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
+                    
+                    // Iterate over each directory
+                    directories.each { directory ->
+                        // Execute Terraform destroy in each directory
+                        sh "cd ${directory} && terraform destroy -auto-approve"
+                    }
+                }
+            }
+        }
     }
 }
