@@ -1,3 +1,10 @@
+terraform {
+  required_providers {
+    # Define your required providers here...
+  }
+  auto_approve = false
+}
+
 resource "aws_instance" "terraform-instance-1" {
   ami           = var.my-ami
   instance_type = var.my-instance-type
