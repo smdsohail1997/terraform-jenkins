@@ -7,18 +7,18 @@ pipeline {
         AWS_DEFAULT_REGION    = 'ap-south-1'
     }
     
-    stages {
+    stages {   
         stage('Terraform Init') {
             steps {
                 script {
                     // Get a list of directories in the root directory
-                    def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split("\n")
+                    def rootDir = new File(".")
+                    def dirs = rootDir.listFiles().findAll { it.isDirectory() }
                     
                     // Iterate over each directory
-                    for (def dir in dirs) {
+                    dirs.each { dir ->
                         // Execute Terraform init in each directory
-                        dir = dir.take(dir.size() - 1) // Remove trailing "/"
-                        dir(dir) {
+                        dir.with {
                             sh 'terraform init'
                         }
                     }
@@ -30,13 +30,13 @@ pipeline {
             steps {
                 script {
                     // Get a list of directories in the root directory
-                    def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split("\n")
+                    def rootDir = new File(".")
+                    def dirs = rootDir.listFiles().findAll { it.isDirectory() }
                     
                     // Iterate over each directory
-                    for (def dir in dirs) {
+                    dirs.each { dir ->
                         // Execute Terraform plan in each directory
-                        dir = dir.take(dir.size() - 1) // Remove trailing "/"
-                        dir(dir) {
+                        dir.with {
                             sh 'terraform plan -out=tfplan'
                         }
                     }
@@ -48,13 +48,13 @@ pipeline {
             steps {
                 script {
                     // Get a list of directories in the root directory
-                    def dirs = sh(script: 'ls -d */', returnStdout: true).trim().split("\n")
+                    def rootDir = new File(".")
+                    def dirs = rootDir.listFiles().findAll { it.isDirectory() }
                     
                     // Iterate over each directory
-                    for (def dir in dirs) {
+                    dirs.each { dir ->
                         // Execute Terraform apply in each directory
-                        dir = dir.take(dir.size() - 1) // Remove trailing "/"
-                        dir(dir) {
+                        dir.with {
                             sh 'terraform apply -auto-approve tfplan'
                         }
                     }
