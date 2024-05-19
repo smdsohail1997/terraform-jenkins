@@ -11,7 +11,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 script {
-                    // Find all directories containing main.tf files
+                    // Find all directories containing .tf files
                     def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
                     // Iterate over each directory
@@ -26,7 +26,7 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 script {
-                    // Find all directories containing main.tf files
+                    // Find all directories containing .tf files
                     def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
                     // Iterate over each directory
@@ -41,7 +41,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    // Find all directories containing main.tf files
+                    // Find all directories containing .tf files
                     def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
                     // Iterate over each directory
