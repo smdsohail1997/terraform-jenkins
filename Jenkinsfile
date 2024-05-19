@@ -16,7 +16,7 @@ pipeline {
         
         stage('Terraform Init') {
             steps {
-                dir('ec2/') { // Change directory to 'ec2' folder
+                dir('EC2') { // Change directory to 'ec2' folder
                     script {
                         sh 'terraform init'
                     }
@@ -26,7 +26,7 @@ pipeline {
         
         stage('Terraform Plan') {
             steps {
-                dir('ec2/') { // Change directory to 'ec2' folder
+                dir('EC2') { // Change directory to 'ec2' folder
                     script {
                         sh 'terraform plan -out=tfplan'
                     }
@@ -36,7 +36,7 @@ pipeline {
         
         stage('Terraform Apply') {
             steps {
-                dir('ec2/') { // Change directory to 'ec2' folder
+                dir('EC2') { // Change directory to 'ec2' folder
                     script {
                         sh 'terraform apply -auto-approve tfplan'
                     }
