@@ -1,10 +1,3 @@
-terraform {
-  required_providers {
-    # Define your required providers here...
-  }
-  auto_approve = false
-}
-
 provider "aws" {
   region = "ap-south-1"
 }
