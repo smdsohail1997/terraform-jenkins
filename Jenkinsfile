@@ -12,7 +12,7 @@ pipeline {
             steps {
                 script {
                     // Find all directories containing main.tf files
-                    def directories = sh(script: "find . -type f -name 'main.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
+                    def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
                     // Iterate over each directory
                     directories.each { directory ->
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Find all directories containing main.tf files
-                    def directories = sh(script: "find . -type f -name 'main.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
+                    def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
                     // Iterate over each directory
                     directories.each { directory ->
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     // Find all directories containing main.tf files
-                    def directories = sh(script: "find . -type f -name 'main.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
+                    def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
                     // Iterate over each directory
                     directories.each { directory ->
