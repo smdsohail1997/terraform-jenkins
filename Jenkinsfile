@@ -47,7 +47,7 @@ pipeline {
                     // Iterate over each directory
                     directories.each { directory ->
                         // Execute Terraform apply in each directory
-                        sh "cd ${directory} && terraform apply -auto-approve tfplan"
+                        sh "cd ${directory} && terraform apply tfplan"
                     }
                 }
             }
@@ -62,7 +62,7 @@ pipeline {
                     // Iterate over each directory
                     directories.each { directory ->
                         // Execute Terraform destroy in each directory
-                        sh "cd ${directory} && terraform destroy -auto-approve"
+                        sh "cd ${directory} && terraform destroy "
                     }
                 }
             }
