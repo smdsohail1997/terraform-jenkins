@@ -41,9 +41,6 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 script {
-                    // Ask for confirmation before applying Terraform changes
-                    input message: 'Do you want to apply the Terraform changes?', ok: 'Apply'
-                    
                     // Find all directories containing .tf files
                     def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
@@ -59,9 +56,6 @@ pipeline {
         stage('Terraform Destroy') {
             steps {
                 script {
-                    // Ask for confirmation before destroying Terraform infrastructure
-                    input message: 'Do you want to destroy the Terraform infrastructure?', ok: 'Destroy'
-                    
                     // Find all directories containing .tf files
                     def directories = sh(script: "find . -type f -name '*.tf' -exec dirname {} \\;", returnStdout: true).trim().split("\n")
                     
