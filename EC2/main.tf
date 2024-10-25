@@ -3,11 +3,11 @@ provider "aws" {
 }
 
 resource "aws_instance" "terraform-instance-1" {
-  ami           = "ami-001843b876406202a"
+  ami           = "ami-04a37924ffe27da53"
   instance_type = "t2.micro"
   key_name      = "jenkins"
   tags = {
-    Name  = "ss-instance-1"
+    Name  = "terraform-cicd-1"
     appid = "345"
     env   = "dev"
   }
@@ -15,11 +15,11 @@ resource "aws_instance" "terraform-instance-1" {
 }
 
 /*resource "aws_instance" "terraform-instance-2" {
-  ami           = "ami-001843b876406202a"
+  ami           = "ami-04a37924ffe27da53"
   instance_type = "t2.micro"
   key_name      = "jenkins"
   tags = {
-    Name = "ss-instance-2"
+    Name = "terraform-cicd-2"
 
   }
   availability_zone = "ap-south-1a"
