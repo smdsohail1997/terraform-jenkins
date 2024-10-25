@@ -1,7 +1,7 @@
 variable "my-ami" {
     description = "this the value for the AMI"
     type = string
-    default = "ami-05e00961530ae1b55"
+    default = "ami-04a37924ffe27da53"
   
 }
 
