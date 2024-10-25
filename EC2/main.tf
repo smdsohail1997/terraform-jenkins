@@ -7,7 +7,7 @@ resource "aws_instance" "terraform-instance-1" {
   instance_type = "t2.micro"
   key_name      = "jenkins"
   tags = {
-    Name  = "terraform-cicd-1"
+    Name  = "terraform-cicd-EC2-1"
     appid = "345"
     env   = "dev"
   }
@@ -19,7 +19,7 @@ resource "aws_instance" "terraform-instance-1" {
   instance_type = "t2.micro"
   key_name      = "jenkins"
   tags = {
-    Name = "terraform-cicd-2"
+    Name = "terraform-cicd-Ec2-2"
 
   }
   availability_zone = "ap-south-1a"
