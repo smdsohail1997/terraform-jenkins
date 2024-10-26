@@ -5,7 +5,7 @@ provider "aws" {
 resource "aws_instance" "terraform-instance-1" {
   ami           = "ami-04a37924ffe27da53"
   instance_type = "t2.micro"
-  key_name      = "jenkins"
+  key_name      = "server2"
   tags = {
     Name  = "terraform-cicd-EC2-1"
     appid = "345"
